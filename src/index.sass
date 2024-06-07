@@ -1,0 +1,72 @@
+@import ./components/mode.sass
+  
+:root
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif
+  line-height: 1.5
+  font-weight: 400
+  font-synthesis: none
+  text-rendering: optimizeLegibility
+  -webkit-font-smoothing: antialiased
+  @include transition
+  @include theme
+  -moz-osx-font-smoothing: grayscale
+
+body
+  @include reset
+  box-sizing: border-box
+
+#root
+  display: grid
+  gap: 20px
+  height: 100vh
+
+a
+  text-decoration: inherit
+  color: inherit
+  cursor: pointer
+  &:hover
+    @include transition
+    @include hover-active-color
+
+h1, h2
+  @include reset
+  font-weight: 500
+
+button
+  border: 0
+  @include inherit
+  background-color: transparent
+  font-size: 16px
+  cursor: pointer
+  &:disabled
+    cursor: default
+  &:not([disabled]) 
+    &:hover
+      @include hover-active-color
+      
+.skeleton 
+  background-color: var(--skeleton-color)
+  background-image:	linear-gradient(90deg, rgba(#fff, 0),rgba(#fff, 0.4),rgba(#fff, 0))
+  background-size: 40px 100%
+  background-repeat: no-repeat
+  background-position: left -40px top 0
+  animation: highlight 1200ms ease-out infinite
+
+@keyframes highlight 
+  to 
+    background-position: right -40px top 0
+
+.loading
+  border-radius: 50%
+  background: var(--txt-color)
+  margin: 15px
+  border: 30px solid transparent
+  place-self: center
+  box-shadow: 0 0 5px 10px
+  animation: loadingPulse 600ms linear infinite
+
+@keyframes loadingPulse
+  0%
+    box-shadow: 0 0 5px 10px
+  50%
+    box-shadow: 0 0 10px 20px
